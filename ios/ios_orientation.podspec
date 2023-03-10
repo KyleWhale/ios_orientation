@@ -5,9 +5,9 @@
 Pod::Spec.new do |s|
   s.name             = 'ios_orientation'
   s.version          = '0.0.1'
-  s.summary          = 'A new Flutter plugin project.'
+  s.summary          = 'Support iOS16 screen rotation.'
   s.description      = <<-DESC
-A new Flutter plugin project.
+Support iOS16 screen rotation.
                        DESC
   s.homepage         = 'http://example.com'
   s.license          = { :file => '../LICENSE' }

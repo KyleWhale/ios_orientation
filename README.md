@@ -1,6 +1,6 @@
 # ios_orientation
 
-A new Flutter plugin project.
+Support iOS16 screen rotation.
 
 ## Getting Started
 
