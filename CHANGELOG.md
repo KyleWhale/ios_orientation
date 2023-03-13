@@ -13,3 +13,11 @@
 ## 0.0.4
 
 * delete appDelegate category fix file not found
+
+## 0.0.5
+
+* user default
+
+## 0.0.6
+
+* bug fix

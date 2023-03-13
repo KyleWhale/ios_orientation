@@ -17,20 +17,16 @@
   if ([@"setOrientation" isEqualToString:call.method]) {
       [self orientation:[call.arguments intValue]];
       result(nil);
-  } if ([@"setLimitOrientation" isEqualToString:call.method]) {
-      IosOrientationPlugin.orientation = [call.method intValue];
+  }
+  else if ([@"setLimitOrientation" isEqualToString:call.method]) {
+      [[NSUserDefaults standardUserDefaults] setObject:call.arguments forKey:@"ios_orientation"];
+      if (@available(iOS 16.0, *)) {
+          [[UIApplication sharedApplication].keyWindow.rootViewController setNeedsUpdateOfSupportedInterfaceOrientations];
+      }
       result(nil);
   } else {
       result(FlutterMethodNotImplemented);
   }
-}
-
-+ (void)setOrientation:(int)portrait {
-    objc_setAssociatedObject(self, @selector(orientation), @(portrait), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-+ (int)orientation {
-    return [objc_getAssociatedObject(self, @selector(orientation)) intValue];
 }
 
 - (void)orientation:(int)orientation {
@@ -39,6 +35,7 @@
         return;
     }
     if (@available(iOS 16.0, *)) {
+        [[UIApplication sharedApplication].keyWindow.rootViewController setNeedsUpdateOfSupportedInterfaceOrientations];
         NSArray *array = [[[UIApplication sharedApplication] connectedScenes] allObjects];
         UIWindowScene *scene = [array firstObject];
         UIInterfaceOrientationMask mask = [self orientationMask:orientation];

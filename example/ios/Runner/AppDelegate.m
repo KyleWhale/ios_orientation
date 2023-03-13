@@ -17,9 +17,10 @@
 
 - (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
     
-    if (IosOrientationPlugin.portrait == 1) {
+    int portrait = [[[NSUserDefaults standardUserDefaults] objectForKey:@"ios_orientation"] intValue];
+    if (portrait == 1) {
         return UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight;
-    } else if (IosOrientationPlugin.portrait == 2) {
+    } else if (portrait == 2) {
         return UIInterfaceOrientationMaskAllButUpsideDown;
     }
     return UIInterfaceOrientationMaskPortrait;
