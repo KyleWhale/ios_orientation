@@ -13,4 +13,8 @@ class IosOrientation {
   setOrientation(OrientationIOS orientation) {
     IosOrientationPlatform.instance.setOrientation(orientation);
   }
+
+  setLimitOrientation(bool portrait) {
+    IosOrientationPlatform.instance.setLimitOrientation(portrait);
+  }
 }

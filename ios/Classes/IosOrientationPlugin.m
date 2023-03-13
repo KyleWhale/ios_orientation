@@ -1,4 +1,5 @@
 #import "IosOrientationPlugin.h"
+#import <objc/runtime.h>
 
 @implementation IosOrientationPlugin
 
@@ -16,9 +17,20 @@
   if ([@"setOrientation" isEqualToString:call.method]) {
       [self orientation:[call.arguments intValue]];
       result(nil);
+  } if ([@"setLimitOrientation" isEqualToString:call.method]) {
+      IosOrientationPlugin.portrait = [call.method boolValue];
+      result(nil);
   } else {
       result(FlutterMethodNotImplemented);
   }
+}
+
++ (void)setPortrait:(BOOL)portrait {
+    objc_setAssociatedObject(self, @selector(portrait), @(portrait), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
++ (BOOL)portrait {
+    return [objc_getAssociatedObject(self, @selector(portrait)) intValue];
 }
 
 // ios16之后横竖屏转换
@@ -38,6 +50,18 @@
         NSNumber *target = [NSNumber numberWithInteger:deviceOrientation];
         [[UIDevice currentDevice] setValue:target forKey:@"orientation"];
     }
+}
+
++ (UIInterfaceOrientationMask)supportOrientationMask:(int)orientation {
+    
+    if (orientation == 1) {
+        return UIInterfaceOrientationMaskPortrait;
+    } else if (orientation == 2) {
+        return UIInterfaceOrientationMaskLandscapeLeft;
+    } else if (orientation == 3) {
+        return UIInterfaceOrientationMaskLandscapeRight;
+    }
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 - (UIInterfaceOrientationMask)orientationMask:(int)orientation {

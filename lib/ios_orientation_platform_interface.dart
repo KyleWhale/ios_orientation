@@ -27,4 +27,8 @@ abstract class IosOrientationPlatform extends PlatformInterface {
   setOrientation(OrientationIOS orientation) {
     throw UnimplementedError('setOrientation() has not been implemented.');
   }
+
+  setLimitOrientation(bool portrait) {
+    throw UnimplementedError('setLimitOrientation() has not been implemented.');
+  }
 }

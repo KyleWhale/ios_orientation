@@ -13,6 +13,11 @@ class MockIosOrientationPlatform
   setOrientation(OrientationIOS orientation) {
     debugPrint('setOrientation $orientation');
   }
+
+  @override
+  setLimitOrientation(bool portrait) {
+    debugPrint('setLimitOrientation $portrait');
+  }
 }
 
 void main() {
