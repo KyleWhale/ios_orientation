@@ -33,7 +33,6 @@
     return [objc_getAssociatedObject(self, @selector(orientation)) intValue];
 }
 
-// ios16之后横竖屏转换
 - (void)orientation:(int)orientation {
     
     if (orientation == 0) {
@@ -50,18 +49,6 @@
         NSNumber *target = [NSNumber numberWithInteger:deviceOrientation];
         [[UIDevice currentDevice] setValue:target forKey:@"orientation"];
     }
-}
-
-+ (UIInterfaceOrientationMask)supportOrientationMask:(int)orientation {
-    
-    if (orientation == 1) {
-        return UIInterfaceOrientationMaskPortrait;
-    } else if (orientation == 2) {
-        return UIInterfaceOrientationMaskLandscapeLeft;
-    } else if (orientation == 3) {
-        return UIInterfaceOrientationMaskLandscapeRight;
-    }
-    return UIInterfaceOrientationMaskPortrait;
 }
 
 - (UIInterfaceOrientationMask)orientationMask:(int)orientation {

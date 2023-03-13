@@ -1,6 +1,6 @@
 name: ios_orientation
 description: Support iOS16 screen rotation.
-version: 0.0.3
+version: 0.0.4
 repository: https://github.com/KyleWhale/ios_orientation
 
 environment:

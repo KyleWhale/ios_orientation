@@ -15,4 +15,14 @@
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+    
+    if (IosOrientationPlugin.portrait == 1) {
+        return UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight;
+    } else if (IosOrientationPlugin.portrait == 2) {
+        return UIInterfaceOrientationMaskAllButUpsideDown;
+    }
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 @end

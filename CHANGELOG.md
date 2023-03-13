@@ -9,3 +9,7 @@
 ## 0.0.3
 
 * AppDelegate Category
+
+## 0.0.4
+
+* delete appDelegate category fix file not found
