@@ -8,13 +8,19 @@ enum OrientationIOS {
   landscapeRight,
 }
 
+enum SupportOrientationIOS {
+  portraitUp,
+  landscape,
+  allButUpsideDown,
+}
+
 class IosOrientation {
 
   setOrientation(OrientationIOS orientation) {
     IosOrientationPlatform.instance.setOrientation(orientation);
   }
 
-  setLimitOrientation(bool portrait) {
-    IosOrientationPlatform.instance.setLimitOrientation(portrait);
+  setLimitOrientation(SupportOrientationIOS orientation) {
+    IosOrientationPlatform.instance.setLimitOrientation(orientation);
   }
 }

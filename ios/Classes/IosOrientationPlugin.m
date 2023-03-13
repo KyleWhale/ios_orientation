@@ -18,19 +18,19 @@
       [self orientation:[call.arguments intValue]];
       result(nil);
   } if ([@"setLimitOrientation" isEqualToString:call.method]) {
-      IosOrientationPlugin.portrait = [call.method boolValue];
+      IosOrientationPlugin.orientation = [call.method intValue];
       result(nil);
   } else {
       result(FlutterMethodNotImplemented);
   }
 }
 
-+ (void)setPortrait:(BOOL)portrait {
-    objc_setAssociatedObject(self, @selector(portrait), @(portrait), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
++ (void)setOrientation:(int)portrait {
+    objc_setAssociatedObject(self, @selector(orientation), @(portrait), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-+ (BOOL)portrait {
-    return [objc_getAssociatedObject(self, @selector(portrait)) intValue];
++ (int)orientation {
+    return [objc_getAssociatedObject(self, @selector(orientation)) intValue];
 }
 
 // ios16之后横竖屏转换

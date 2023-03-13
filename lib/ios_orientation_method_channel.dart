@@ -16,8 +16,22 @@ class MethodChannelIosOrientation extends IosOrientationPlatform {
   }
 
   @override
-  setLimitOrientation(bool portrait) {
-    methodChannel.invokeMethod<bool>('setLimitOrientation', portrait);
+  setLimitOrientation(SupportOrientationIOS orientation) {
+    methodChannel.invokeMethod<bool>('setLimitOrientation', transSupportOrientation(orientation));
+  }
+
+  int transSupportOrientation(SupportOrientationIOS orientation) {
+    switch (orientation) {
+      case SupportOrientationIOS.portraitUp: {
+        return 0;
+      }
+      case SupportOrientationIOS.landscape: {
+        return 1;
+      }
+      case SupportOrientationIOS.allButUpsideDown: {
+        return 2;
+      }
+    }
   }
 
   int transOrientation(OrientationIOS orientation) {

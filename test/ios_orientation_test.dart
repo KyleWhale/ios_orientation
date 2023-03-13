@@ -15,8 +15,8 @@ class MockIosOrientationPlatform
   }
 
   @override
-  setLimitOrientation(bool portrait) {
-    debugPrint('setLimitOrientation $portrait');
+  setLimitOrientation(SupportOrientationIOS orientation) {
+    debugPrint('setLimitOrientation $orientation');
   }
 }
 

@@ -15,12 +15,4 @@
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
-- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
-    
-    if (IosOrientationPlugin.portrait) {
-        return UIInterfaceOrientationMaskPortrait;
-    }
-    return UIInterfaceOrientationMaskAllButUpsideDown;
-}
-
 @end
