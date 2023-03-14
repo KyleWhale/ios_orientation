@@ -53,9 +53,9 @@
     if (orientation == 1) {
         return UIInterfaceOrientationMaskPortrait;
     } else if (orientation == 2) {
-        return UIInterfaceOrientationMaskLandscapeLeft;
-    } else if (orientation == 3) {
         return UIInterfaceOrientationMaskLandscapeRight;
+    } else if (orientation == 3) {
+        return UIInterfaceOrientationMaskLandscapeLeft;
     }
     return UIInterfaceOrientationMaskPortrait;
 }
